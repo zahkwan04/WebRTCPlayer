@@ -1,0 +1,34 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Ignore debug folder
+debug/
+
+# Ignore workspace files
+*.code-workspace
+
+# Ignore Qt Creator cache files
+.qtc_clangd/
+
+# Ignore all cached and temporary files
+*.idx
+*.ilk
+*.pdb
+
+# Ignore OpenSSL installer
+openssl/Win64OpenSSL-3_1_4.msi
+
+# Ignore Qt Creator user settings
+Phoenix.pro.user
+
+# Ignore WebRTC release folder and zip
+webrtc68release/
+webrtc68release.zip
