@@ -1,12 +1,13 @@
-#include <QApplication>
 #include "MainWindow.h"
+#include <QApplication>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     QApplication app(argc, argv);
 
     QString streamUrl;
     if (argc > 1) {
-        streamUrl = QString::fromUtf8(argv[1]);
+        streamUrl = argv[1];
     }
 
     MainWindow window(streamUrl);

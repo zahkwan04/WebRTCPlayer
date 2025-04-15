@@ -1,6 +1,6 @@
-QT += core gui widgets webenginewidgets
+QT += widgets webenginewidgets
 
-CONFIG += c++17
+CONFIG += c++17 release
 
 SOURCES += \
     main.cpp \
@@ -9,7 +9,5 @@ SOURCES += \
 HEADERS += \
     MainWindow.h
 
-RESOURCES +=
-
-# Optional: Increase WebEngine cache if needed
-QMAKE_CXXFLAGS += -Wall
+FORMS += \
+    MainWindow.ui

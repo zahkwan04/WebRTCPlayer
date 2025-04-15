@@ -1,71 +1,57 @@
 #include "MainWindow.h"
-#include <QDebug>
+#include <QVBoxLayout>
+#include <QWidget>
+#include <QToolBar>
+#include <QAction>
+#include <QUrlQuery>
+#include <QTimer>
+#include <QIcon>
 
 MainWindow::MainWindow(const QString &url, QWidget *parent)
-    : QMainWindow(parent), streamUrl("http://10.12.49.100/showStream?workflowId=teststream") {
+    : QMainWindow(parent), streamUrl(url)
+{
+    resize(640, 500);
+
+    // Set app icon
+    setWindowIcon(QIcon("icon_main.ico"));
 
     webView = new QWebEngineView(this);
 
-    startBtn = new QPushButton("Start");
-    pauseBtn = new QPushButton("Pause");
-    stopBtn = new QPushButton("Stop");
-    refreshBtn = new QPushButton("Refresh");
+    QUrl urlObj(streamUrl);
+    webView->load(urlObj);
 
-    connect(startBtn, &QPushButton::clicked, this, &MainWindow::startStream);
-    connect(pauseBtn, &QPushButton::clicked, this, &MainWindow::pauseStream);
-    connect(stopBtn, &QPushButton::clicked, this, &MainWindow::stopStream);
-    connect(refreshBtn, &QPushButton::clicked, this, &MainWindow::refreshStream);
-
-    QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(webView);
-    layout->addWidget(startBtn);
-    layout->addWidget(pauseBtn);
-    layout->addWidget(stopBtn);
-    layout->addWidget(refreshBtn);
-
-    QWidget *central = new QWidget(this);
-    central->setLayout(layout);
-    setCentralWidget(central);
-
-    resize(700, 700);
-
-    if (!streamUrl.isEmpty()) {
-        startStream();
-    }
-
-    checkTimer = new QTimer(this);
-    connect(checkTimer, &QTimer::timeout, this, &MainWindow::checkStreamStatus);
-    checkTimer->start(10000);  // 10 seconds for example
-}
-
-void MainWindow::startStream() {
-    if (!streamUrl.isEmpty()) {
-        webView->load(QUrl(streamUrl));
-        lastUrl = streamUrl;
-    }
-}
-
-void MainWindow::pauseStream() {
-    // Not directly supported in WebView — you could inject JS to pause video if needed
-    qDebug() << "Pause not supported in QWebEngineView directly.";
-}
-
-void MainWindow::stopStream() {
-    webView->setHtml("<html><body><p>Stream stopped.</p></body></html>");
-}
-
-void MainWindow::refreshStream() {
-    if (!lastUrl.isEmpty()) {
-        webView->reload();
-    }
-}
-
-void MainWindow::checkStreamStatus() {
-    // Basic mechanism: if blank page is detected, refresh
-    webView->page()->toPlainText([this](const QString &text) {
-        if (text.trimmed().isEmpty()) {
-            qDebug() << "No stream data, attempting auto-refresh...";
-            refreshStream();
+    connect(webView, &QWebEngineView::loadFinished, this, [=](bool ok) {
+        if (!ok) {
+            QTimer::singleShot(5000, this, &MainWindow::refreshStream);
         }
     });
+
+    QUrlQuery query(urlObj);
+    QString workflowId = query.queryItemValue("workflowId");
+
+    if (!workflowId.isEmpty()) {
+        setWindowTitle("GIRN Dispatcher - Streaming: " + workflowId);
+    } else {
+        setWindowTitle("GIRN Dispatcher - Streaming Viewer");
+    }
+
+    // Refresh Toolbar
+    QToolBar *toolBar = new QToolBar("Controls", this);
+    toolBar->setMovable(false);
+    toolBar->setIconSize(QSize(24, 24));
+
+    QAction *refreshAction = new QAction(QIcon("icon_update.ico"), "Refresh", this);
+    refreshAction->setToolTip("Refresh Stream");
+
+    connect(refreshAction, &QAction::triggered, this, &MainWindow::refreshStream);
+
+    toolBar->addAction(refreshAction);
+    addToolBar(Qt::TopToolBarArea, toolBar);
+
+    setCentralWidget(webView);
+}
+
+void MainWindow::refreshStream()
+{
+    webView->reload();
 }
