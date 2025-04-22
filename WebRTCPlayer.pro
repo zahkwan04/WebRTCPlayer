@@ -11,3 +11,5 @@ HEADERS += \
 
 FORMS += \
     MainWindow.ui
+
+RC_FILE = appicon.rc

@@ -19,7 +19,7 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStri
 INCPATH       = -I. -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtWebEngineWidgets -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtPrintSupport -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtWidgets -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtWebEngineCore -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtQuick -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtOpenGL -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtGui -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtQmlMeta -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtQmlModels -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtQmlWorkerScript -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtWebChannel -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtQml -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtNetwork -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtQmlIntegration -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtPositioning -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\include\QtCore -Irelease -I. -I/include -I..\..\..\..\Qt6.8\6.8.2\msvc2022_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /OPT:REF /OPT:ICF /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineWidgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6PrintSupport.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Widgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineCore.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Quick.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6OpenGL.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Gui.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlMeta.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlModels.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlWorkerScript.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebChannel.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Qml.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Network.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Positioning.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Core.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6EntryPoint.lib shell32.lib  
+LIBS          = C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineWidgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6PrintSupport.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Widgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineCore.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Quick.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6OpenGL.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Gui.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlMeta.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlModels.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlWorkerScript.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebChannel.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Qml.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Network.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Positioning.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Core.lib release\appicon.res C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6EntryPoint.lib shell32.lib  
 QMAKE         = C:\Qt6.8\6.8.2\msvc2022_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -40,7 +40,7 @@ IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\appicon.res
 SED           = $(QMAKE) -install sed
 MOVE          = move
 
@@ -112,11 +112,14 @@ DESTDIR_TARGET = release\WebRTCPlayer.exe
 first: all
 all: Makefile.Release  release\WebRTCPlayer.exe
 
-release\WebRTCPlayer.exe: C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineWidgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6PrintSupport.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Widgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineCore.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Quick.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6OpenGL.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Gui.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlMeta.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlModels.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlWorkerScript.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebChannel.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Qml.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Network.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Positioning.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Core.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6EntryPoint.lib ui_MainWindow.h $(OBJECTS) 
+release\WebRTCPlayer.exe: C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineWidgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6PrintSupport.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Widgets.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineCore.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Quick.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6OpenGL.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Gui.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlMeta.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlModels.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6QmlWorkerScript.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebChannel.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Qml.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Network.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Positioning.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Core.lib C:\Qt6.8\6.8.2\msvc2022_64\lib\Qt6EntryPoint.lib ui_MainWindow.h $(OBJECTS) release\appicon.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 release\main.obj release\MainWindow.obj release\moc_MainWindow.obj
 $(LIBS)
 <<
+
+release\appicon.res: appicon.rc
+	rc /NOLOGO $(DEFINES) -fo release\appicon.res appicon.rc
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release WebRTCPlayer.pro -spec win32-msvc "CONFIG+=qtquickcompiler"
@@ -128,6 +131,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.obj release\MainWindow.obj release\moc_MainWindow.obj
+	-$(DEL_FILE) release\appicon.res
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash

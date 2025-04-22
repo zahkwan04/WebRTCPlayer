@@ -12,6 +12,9 @@
 # Ignore debug folder
 debug/
 
+# Ignore release folder
+release/
+
 # Ignore workspace files
 *.code-workspace
 
