@@ -353,6 +353,7 @@ Makefile: WebRTCPlayer.pro ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\mkspecs\win32-msv
 		..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Core.prl \
 		..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6EntryPoint.prl \
 		..\..\..\..\Qt6.8\6.8.2\msvc2022_64\mkspecs\features\build_pass.prf \
+		resources.qrc \
 		..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineWidgetsd.prl \
 		..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6PrintSupportd.prl \
 		..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Widgetsd.prl \
@@ -639,6 +640,7 @@ WebRTCPlayer.pro:
 ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Core.prl:
 ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6EntryPoint.prl:
 ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\mkspecs\features\build_pass.prf:
+resources.qrc:
 ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6WebEngineWidgetsd.prl:
 ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6PrintSupportd.prl:
 ..\..\..\..\Qt6.8\6.8.2\msvc2022_64\lib\Qt6Widgetsd.prl:
